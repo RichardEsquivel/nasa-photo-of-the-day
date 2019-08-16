@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import 'semantic-ui-css/semantic.min.css';
+import PhotoCard from './components/PhotoCard';
 import './App.css';
-import PhotoCard from './components/PhotoCard.js';
+import { CardContainer } from './components/styles';
 
 function App() {
 	const [ data, setData ] = useState({});
@@ -14,12 +14,9 @@ function App() {
 			});
 	}, []);
 	return (
-		<div className="App">
-			<p>Read through the instructions in the README.md file to build your NASA app! Have fun 🚀!</p>
-			<div className="photoCards">
-				<PhotoCard title={data.title} url={data.url} explanation={data.explanation} />
-			</div>
-		</div>
+		<CardContainer className="App">
+			<PhotoCard className="photoCard" title={data.title} url={data.url} explanation={data.explanation} />
+		</CardContainer>
 	);
 }
 export default App;
